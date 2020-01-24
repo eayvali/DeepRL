@@ -31,9 +31,9 @@ Install the dependencies using the instructions [here](https://github.com/eayval
 * agent.py                 : defines the agent class
 * network.py               : defines deep q network and dueling network classes
 * Report.pdf               : description of the implementation and results
-* /Results/*checkpoint.pth : saved model weights 
-* /Results/*scores.npy     : saved episodic scores during training
-* /Results/*html           : output of main.ipynb for different network architectures
+* ./Results/*checkpoint.pth : saved model weights 
+* ./Results/*scores.npy     : saved episodic scores during training
+* ./Results/*html           : output of main.ipynb for different network architectures
 
 
 
