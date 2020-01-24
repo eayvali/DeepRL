@@ -1,4 +1,4 @@
-# DeepRL
+# Deep Reinforcement Learning
 
 
 [//]: # (Image References)
