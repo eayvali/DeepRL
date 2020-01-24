@@ -28,6 +28,7 @@ Install the dependencies using the instructions [here](https://github.com/eayval
 ### Files
 
 * main.ipynb               : main file that initializes the environment and trains the agent
+* Results.ipynb            : plots the scores and runs the trained agent on the Unity environment
 * agent.py                 : defines the agent class
 * network.py               : defines deep q network and dueling network classes
 * Report.pdf               : description of the implementation and results
