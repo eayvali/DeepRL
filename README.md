@@ -1,4 +1,4 @@
-# DeepRL
+# Deep Reinforcement Learning
 
 
 [//]: # (Image References)
@@ -14,29 +14,29 @@ To set up your python environment to run the code in this repository, follow the
 
 	- __Linux__ or __Mac__: 
 	```bash
-	conda create --name drlnd python=3.6
-	source activate drlnd
+	conda create --name deeprl python=3.6
+	source activate deeprl
 	```
 	- __Windows__: 
 	```bash
-	conda create --name drlnd python=3.6 
-	activate drlnd
+	conda create --name deeprl python=3.6 
+	activate deeprl
 	```
 	
 2. Follow the instructions in [this repository](https://github.com/openai/gym) to perform a minimal install of OpenAI gym.  
 	- Next, install the **classic control** environment group by following the instructions [here](https://github.com/openai/gym#classic-control).
 	- Then, install the **box2d** environment group by following the instructions [here](https://github.com/openai/gym#box2d).
 	
-3. Clone the repository (if you haven't already!), and navigate to the `python/` folder.  Then, install several dependencies.
+3. Clone the repository, and navigate to the `python/` folder.  Then, install several dependencies.
 ```bash
 git clone https://github.com/udacity/deep-reinforcement-learning.git
 cd deep-reinforcement-learning/python
 pip install .
 ```
 
-4. Create an [IPython kernel](http://ipython.readthedocs.io/en/stable/install/kernel_install.html) for the `drlnd` environment.  
+4. Create an [IPython kernel](http://ipython.readthedocs.io/en/stable/install/kernel_install.html) for the `deeprl` environment.  
 ```bash
-python -m ipykernel install --user --name drlnd --display-name "deeprl"
+python -m ipykernel install --user --name deeprl --display-name "deeprl"
 ```
 
 5. Before running code in a notebook, change the kernel to match the `deeprl` environment by using the drop-down `Kernel` menu. 

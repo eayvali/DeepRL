@@ -23,7 +23,6 @@ class deep_Q_net(nn.Module):
             seed (int): Random seed
             fc1_units (int): Number of nodes in first hidden layer
             fc2_units (int): Number of nodes in second hidden layer
-        https://towardsdatascience.com/three-ways-to-build-a-neural-network-in-pytorch-8cea49f9a61a  
         """
         super(deep_Q_net, self).__init__()
         self.seed = torch.manual_seed(seed)
@@ -54,7 +53,6 @@ class dueling_Q_net(nn.Module):
             state_size (int): Dimension of each state
             action_size (int): Dimension of each action
             seed (int): Random seed
-            https://lilianweng.github.io/lil-log/2018/05/05/implementing-deep-reinforcement-learning-models.html
         """
         super(dueling_Q_net, self).__init__()
             
