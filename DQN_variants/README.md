@@ -1,6 +1,6 @@
 # Project 1: Navigation
 
-### Environement
+### Environment
 
 In this project, we  train an agent to navigate and collect bananas in a large, square world.  
 
