@@ -1,6 +1,6 @@
 # Project 1: Navigation
 
-### Introduction
+### Environement
 
 In this project, we  train an agent to navigate and collect bananas in a large, square world.  
 
@@ -15,6 +15,8 @@ The state space has 37 dimensions and contains the agent's velocity, along with 
 - **`3`** - turn right.
 
 The task is episodic, and in order to solve the environment, the agent must get an average score of +13 over 100 consecutive episodes.
+
+### Content
 
 This repository contains different deep reinforcement learning arhitectures such as Deep Q-Network (DQN) [1], Double Deep-Q-Learning (DDQN) [2], and Dueling Network[3]. DQN is a simple deep neural network architecture that approximates the Q-value function for a given state. It tends to overestimate the Q-values and can be difficult to train. Therefore, several techniques were developed. This project employs experience replay, where state transitions, actions, and rewards are all saved in a buffer, and uniformly sampled in batches during training. Additionally, a separate network that is updated less frequently was used as a target in calculating the loss during backprop to mitigate oscillations during training. The main difference between DQN and DDQN is the choice of target Q values during training. In DDQN, the greedy policy is evaluated according to the online network, but its value is estimated using the target network. Dueling Network, on the other hand, uses the DDQN target Q-function, but differs from the other two in the representation of the network architecture, which separates the representation of state values and (state-dependent) action advantages. For more details, see [1-3]. 
 
