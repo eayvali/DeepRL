@@ -32,12 +32,16 @@ Download the environment from one of the links below.  You need only select the 
 
 ### Files
 
-* main_reacher.ipynb        : main file that initializes the environment and trains the agent
-* ddpg_agent.py             : defines the agent class and the replay buffer memory
-* ddpg_networks.py          : defines the agent and critic networks
-* ./Results/Report.pdf      : description of the implementation and results
-* ./Results/*checkpoint.pth : saved model weights for the actor and the critic
-* ./Results/DDPG_scores.npy : saved episodic scores during training
-* ./Results/plot_results.py : plots the scores for each agent over all episodes
-* ./Results/*html           : output of main_reacher.ipynb cells
+* main_reacher.ipynb         : main file that initializes the environment and trains the agent
+* ddpg_agent.py              : defines the agent class and the replay buffer memory
+* ddpg_networks.py           : defines the agent and critic networks
+* ./Results/Report.pdf       : description of the implementation and results
+* ./Results/*checkpoint.pth  : saved model weights for the actor and the critic
+* ./Results/DDPG_scores.npy  : saved episodic scores during training
+* ./Results/plot_results.py  : plots the scores for each agent over all episodes
+* ./Results/*html            : output of main_reacher.ipynb cells
+* ./Results/watch_agent.ipynb: watch the trained agent
 
+
+![Trained Agent](reacher_agent.gif)
+![Agent Score](agent_score.png)
