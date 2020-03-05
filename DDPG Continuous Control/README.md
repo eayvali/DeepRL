@@ -43,5 +43,5 @@ Download the environment from one of the links below.  You need only select the 
 * ./Results/watch_agent.ipynb: watch the trained agent
 
 
-![Trained Agent](reacher_agent.gif)
-![Agent Score](agent_score.png)
+![Trained Agent](./Results/reacher_agent.gif)
+![Agent Score](./Results/agent_score.png)
