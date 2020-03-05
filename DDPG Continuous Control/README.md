@@ -26,7 +26,7 @@ Install the dependencies using the instructions [here](https://github.com/eayval
 
 Download the environment from one of the links below.  You need only select the environment that matches your operating system:
 
-**_Version 2: Twenty (20) Agents_**
+**Reacher Environment Version 2: Twenty (20) Agents_**
  - Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Linux.zip)
  - Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher.app.zip)
  - Windows (32-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Windows_x86.zip)
