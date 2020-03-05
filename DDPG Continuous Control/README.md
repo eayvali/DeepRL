@@ -1,5 +1,5 @@
 
-# Project 2: Continuos Control Using Deep Reinforcement Learning
+## Project 2: Continuos Control Using Deep Reinforcement Learning
 
 ### Content
 
