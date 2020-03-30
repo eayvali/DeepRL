@@ -69,11 +69,15 @@ class MADDPG:
     def encode_buffer(self,obs):
         #Concatenate states/actions of all agents
         #Reference : github@fsasilva59
+#        print('before encode,obs',obs)
+#        print('after encode,obs', np.array(obs).reshape(1,-1).squeeze())
         return np.array(obs).reshape(1,-1).squeeze()
            
     def decode_buffer(self,size, agent_idx, obs):
         #Reference : github@fsasilva59
         list_idx  = torch.tensor([ idx for idx in range(agent_idx * size, agent_idx * size + size) ]).to(device)    
+#        print('before decode,obs',obs)
+#        print('after decode,obs', obs.index_select(1, list_idx))
         return obs.index_select(1, list_idx)
         
     def step(self, states, actions, rewards, next_states, dones,episode):
@@ -118,21 +122,30 @@ class MADDPG:
             experiences (Tuple[torch.Tensor]): tuple of (s, a, r, s', done) tuples 
             gamma (float): discount factor
         """
-        #all experiences,states: batch_sizex56,actions:batch_sizex4,rewards, batch_sizex2
+        #all experiences
+        #states: batch_sizex56
+        #actions:batch_sizex4
+        #rewards, batch_sizex2
         states, actions, rewards, next_states, dones = experiences
-
+#        print('states',states)
+#        print('actions',actions)
+#        print('rewards',rewards)
         #get agent's experiences   
         agent=meta_agent[agent_idx]
+#        print('agent object',agent)
         agent_states =  self.decode_buffer(self.state_size, agent_idx, states)
         agent_actions = self.decode_buffer(self.action_size, agent_idx, actions)
         agent_next_states = self.decode_buffer(self.state_size, agent_idx, next_states) 
         agent_rewards=self.decode_buffer(1, agent_idx, rewards) 
         agent_dones=self.decode_buffer(1, agent_idx, dones) 
-
+#        print('agent_rewards',agent_rewards)
+#        print('agent_dones',agent_dones)
+#        print('agent_states',agent_states)
 
         #get other agents' experiences
         other_agent_idx=np.delete(range(self.num_agents),agent_idx).squeeze()
         other_agent=meta_agent[other_agent_idx]
+#        print('other_agent object',other_agent)
         other_agent_states =  self.decode_buffer(self.state_size, other_agent_idx, states)
         other_agent_actions = self.decode_buffer(self.action_size, other_agent_idx, actions)
         other_agent_next_states = self.decode_buffer(self.state_size, other_agent_idx, next_states) 
@@ -142,22 +155,27 @@ class MADDPG:
         all_actions=torch.cat((agent_actions, other_agent_actions), dim=1).to(device)
         all_next_states=torch.cat((agent_next_states, other_agent_next_states), dim=1).to(device)
               
+#        print('other agent_states',other_agent_states)
 
         # ---------------------------- update critic ---------------------------- #  
         # Get predicted next-state actions and Q values from target model
         agent_next_actions=agent.actor_target(agent_states)
         other_agent_next_actions=other_agent.actor_target(other_agent_states) #should be agent 2
+#        print(' agent_nex_actions',agent_next_actions)
+#        print('other_agent_next_actions',other_agent_next_actions)
 
         #Next actions-> torch
         all_next_actions=torch.cat((agent_next_actions,other_agent_next_actions), dim=1).to(device) 
    
         Q_targets_next = agent.critic_target(all_next_states, all_next_actions) #batch_sizex1
+#        print('Q_targets_next',Q_targets_next)
         # Compute Q targets for current states (y_i)
         
         Q_targets = agent_rewards + (gamma * Q_targets_next * (1 - agent_dones))
         
         # Compute critic loss
         Q_expected = agent.critic_local(all_states, all_actions)  #batch_sizex1
+#        print('Q_expected',Q_expected)
 
         critic_loss = F.mse_loss(Q_expected, Q_targets)
 
@@ -172,8 +190,9 @@ class MADDPG:
         # Compute next action predictions for all agents        
         agent_action_predictions=agent.actor_local(agent_states)
         #Predictions-> torch, Only backprop agent idx, detach other agents
-        other_agent_action_predictions=other_agent.actor_local(other_agent_states).detach()
-        all_actions_pred = torch.cat((agent_action_predictions, other_agent_action_predictions), dim = 1).to(device)        
+        other_agent_action_predictions=other_agent.actor_local(other_agent_states)#.detach()
+        all_actions_pred = torch.cat((agent_action_predictions, other_agent_action_predictions), dim = 1).to(device) 
+        #Detach other agent states ,only backprop agent states
         actor_loss = -agent.critic_local(all_states, all_actions_pred).mean()
 
         # Minimize the loss
@@ -204,11 +223,13 @@ class ReplayBuffer:
         self.batch_size = batch_size
         self.experience = namedtuple("Experience", field_names=["state", "action", "reward", "next_state", "done"])
         self.seed = random.seed(seed)
+#        print('Replay seed:',seed)
     
     def add(self, state, action, reward, next_state, done):
         """Add a new experience to memory."""
         e = self.experience(state, action, reward, next_state, done)
-
+#        print('new_experience :state',state)
+#        print('new_experience :reward',reward)
 
         self.memory.append(e)
     
