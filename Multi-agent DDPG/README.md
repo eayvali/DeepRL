@@ -5,7 +5,7 @@
 
 # Project 3: Collaboration and Competition
 
-### Content
+### Environment
 This repository contains deep deterministic policy gradients implementation for multi-agent environments.  This project uses the [Tennis](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md#tennis) environment.
 
 ![Trained Agent][image1]
